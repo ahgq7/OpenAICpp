@@ -85,7 +85,8 @@ int main() {
             std::cout << "Assistant: " << response << std::endl;
         }
     });
-     std::cout << "Press Enter to exit..." << std::endl;
+
+    std::cout << "Press Enter to exit..." << std::endl;
     std::cin.get(); // Wait for the asynchronous operation to complete
 
     return 0;
@@ -120,7 +121,8 @@ int main() {
             std::cout << "Assistant: " << response << std::endl;
         }
     });
-     std::cout << "Press Enter to exit..." << std::endl;
+
+    std::cout << "Press Enter to exit..." << std::endl;
     std::cin.get(); // Wait for the asynchronous operation to complete
 
     return 0;
