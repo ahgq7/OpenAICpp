@@ -20,15 +20,15 @@ public:
     void setModel(const std::string& model);
     void setTemperature(double temperature);
     void setMaxTokens(int maxTokens);
-
-    // Mesajları vector<map> olarak al
     void send(const std::vector<std::map<std::string, std::string>>& messages,
-              std::function<void(const std::string&, const openai::Error&)> callback); // Error nesnesi
+              std::function<void(const std::string&, const openai::Error&)> callback);
+    void setEndPoint(const std::string& newEndPoint);
 
 
 private:
     std::string m_apiKey;
     std::string m_model = "gpt-4o"; //default model
+    std::string m_endPoint = "https://api.openai.com/v1/chat/completions";
     double m_temperature = 0.7;
     int m_maxTokens = 1024;
     NetworkRequest m_networkRequest;
