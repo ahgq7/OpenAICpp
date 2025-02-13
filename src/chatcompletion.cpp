@@ -13,6 +13,10 @@ void ChatCompletion::setModel(const std::string& model) {
     m_model = model;
 }
 
+void ChatCompletion::setEndPoint(const std::string &newEndPoint) {
+    m_endPoint = newEndPoint;
+}
+
 void ChatCompletion::setTemperature(double temperature) {
     m_temperature = temperature;
 }
@@ -39,7 +43,7 @@ void ChatCompletion::send(const std::vector<std::map<std::string, std::string>>&
     headers["Authorization"] = "Bearer " + m_apiKey;
 
     m_networkRequest.sendRequest(
-        "https://api.openai.com/v1/chat/completions",
+        m_endPoint,
         "POST",
         headers,
         requestBody.dump(),
