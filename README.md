@@ -90,3 +90,38 @@ int main() {
 
     return 0;
 }
+```
+
+## OpenRouter Usage
+
+```c++
+#include <iostream>
+#include "openai/openai.h"
+
+int main() {
+    std::string apiKey = "OPENROUTER_API_KEY";
+    OpenAI openai(apiKey);
+
+    // Chat Completion Example
+    auto chat = openai.chat();
+
+    chat->setEndPoint("https://openrouter.ai/api/v1/chat/completions");
+    chat->setModel("deepseek/deepseek-r1");
+
+    std::vector<std::map<std::string, std::string>> messages = {
+        {{"role", "system"}, {"content", "You are a helpful assistant."}},
+        {{"role", "user"}, {"content", "Hello, how are you?"}}
+    };
+
+    chat->send(messages, [](const std::string& response, const openai::Error& error) {
+        if (!error.message.empty()) {
+            std::cerr << "Error: " << error.message << std::endl;
+        } else {
+            std::cout << "Assistant: " << response << std::endl;
+        }
+    });
+     std::cout << "Press Enter to exit..." << std::endl;
+    std::cin.get(); // Wait for the asynchronous operation to complete
+
+    return 0;
+}
